@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy birthday!</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+        }
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        .cake {
+            width: 220px;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .fireworks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 1.5em;
+            color: black;
+        }
+        .button {
+            display: inline-block;
+            background-color: #fb83bf;
+            color: black;
+            padding: 10px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background-color: #ff85c0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        #loginModal {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 100;
+        }
+        #videoModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <!-- Нууц код оруулах цонх -->
+    <div id="loginModal">
+        <div>
+            <h2>Тотогийн зүрхэнд нэвтрэх код оруулна уу:</h2>
+            <input type="password" id="passwordInput" placeholder="Нэвтрэх код" />
+            <button onclick="checkPassword()">Нэвтрэх</button>
+            <p id="errorMessage" style="color: red; display: none;">Буруу нууц код байна!</p>
+        </div>
+    </div>
+
+    <!-- Мэндчилгээний хуудас -->
+    <div id="greetingContent" style="display: none;">
+        <h1>Өндөөдөр чи минь хамгийн хөөрхөн нь байсан шүү заа❤️😍</h1>
+        <p>Үнэр нь бүр сайхан юм аа хх</p>
+        <p>Би бүр чамайг санаад байна🥺</p>
+        <p>Хоёулаа зөндөө их хичээгээд л байхад удахгүй хамт байх цаг ирэх байх тийм ээ?🥺</p>
+        <img src="https://media1.tenor.com/m/naWX8j8QzYsAAAAC/milk-and-mocha-milk-and-mocha-bear.gif" alt="Birthday Cake" class="cake">
+        
+        <div class="fireworks">
+            <img src="https://media.tenor.com/TKGL8YjZTnEAAAAi/mimibubu.gif" alt="Fireworks" style="width: 80%; height: auto;">
+        </div>
+
+        <div class="footer">
+            <p>Чамдаа зөндөө их хайртай шүү,<br>Чиний Тото🥺🥺🥺</p>
+            <a href="#" class="button" onclick="playVideo()">Хайр илгээе (энд дараарай🥺)</a>
+        </div>
+    </div>
+
+    <!-- Video Modal хэсэг -->
+    <div id="videoModal">
+        <iframe id="myVideo" width="80%" height="450" style="margin: 5% auto; display: block;" src="https://www.youtube.com/embed/eHFcodX_Vzw" frameborder="0" allowfullscreen></iframe>
+        
+        <button onclick="closeVideo()" style="position: absolute; top: 10px; right: 10px; background: red; color: white; font-size: 1.5em; border: none; cursor: pointer;">✖</button>
+    </div>
+
+    <script>
+        // Нууц код шалгах функц
+        function checkPassword() {
+            var password = document.getElementById("passwordInput").value;
+            if (password === "toto") {
+                document.getElementById("loginModal").style.display = "none";
+                document.getElementById("greetingContent").style.display = "block";
+            } else {
+                document.getElementById("errorMessage").style.display = "block";
+            }
+        }
+
+        // Видео тоглуулах функц
+        function playVideo() {
+            document.getElementById("videoModal").style.display = "flex";
+        }
+
+        // Видео хаах функц
+        function closeVideo() {
+            document.getElementById("videoModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
